@@ -42,9 +42,9 @@ function baseNeed(result){
 }
 
 function methodsForLocation(location){
-  if(location==='home') return ['pushup','bodyweight_squat','mobility_session','balance_session','walk','run','mile','cooper'];
-  if(location==='outdoors') return ['walk','run','mile','cooper','mobility_session','balance_session','bodyweight_squat'];
-  return ['pushup','press','row','pulldown','pullup','barbell_squat','goblet_squat','bodyweight_squat','squat_assessment_path','farmer_carry','farmer_carry_40m','rockport','mile','cooper','mobility_session','balance_session','walk','elliptical','bike','run'];
+  if(location==='home') return ['pushup','bodyweight_squat','mobility_session','mobility_assessment','balance_session','balance_assessment','walk','run','mile','cooper'];
+  if(location==='outdoors') return ['walk','run','mile','cooper','mobility_session','mobility_assessment','balance_session','balance_assessment','bodyweight_squat'];
+  return ['pushup','press','row','pulldown','pullup','barbell_squat','goblet_squat','bodyweight_squat','squat_assessment_path','farmer_carry','farmer_carry_40m','rockport','mile','cooper','mobility_session','mobility_assessment','balance_session','balance_assessment','walk','elliptical','bike','run'];
 }
 function latestAdaptation(adaptationHistory=[],capability){return adaptationHistory.filter(x=>x.capability===capability).sort((a,b)=>new Date(b.timestamp)-new Date(a.timestamp))[0]??null}
 

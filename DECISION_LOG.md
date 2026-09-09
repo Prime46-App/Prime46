@@ -302,3 +302,17 @@ Implementation-only defaults remain OPEN and isolated:
 - exposure lookback windows
 - location-to-method mapping
 These values are WORKING defaults for testing and do not redefine canon.
+
+## 2026-09-09 — QA-03 implementation correction — WORKING
+
+Player One QA exposed an implementation inconsistency: a capability with no verified evidence (Balance) could surface as DEVELOP / MAINTAIN / RE-ESTABLISH while the Character Sheet correctly showed BALANCE — UNRANKED — Assessment required.
+
+Correction in Recommendation Engine v0.1.1:
+- No verified capability evidence + canonical assessment path => ESTABLISH, not DEVELOP or MAINTAIN.
+- Previous verified evidence that is now stale/high-information-value => RE-ESTABLISH.
+- Current verified evidence + developmental need => DEVELOP.
+- Current verified evidence + preservation need => MAINTAIN.
+- Balance and Mobility now have explicit canonical assessment candidates in the BODY quest library.
+- Missing-evidence training candidates for Squat, Carry, Cardio, Mobility, and Balance are suppressed unless a deliberately foundational training path is explicitly allowed.
+
+Status: WORKING implementation correction. This fixes QA-03 without redefining locked architecture.

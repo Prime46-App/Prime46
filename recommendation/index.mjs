@@ -6,7 +6,7 @@ import { bossCheck } from './bossCheck.mjs';
 import { choose } from './choose.mjs';
 import { buildCardioLayer } from './cardioLayers.mjs';
 
-export const RECOMMENDATION_ENGINE_VERSION = '0.1.0';
+export const RECOMMENDATION_ENGINE_VERSION = '0.1.1';
 export const RECOMMENDATION_SPEC_STATUS = 'WORKING_IMPLEMENTATION';
 
 export function generateBodyRecommendation({ playerState = {}, trainingHistory = [], adaptationHistory = [], currentContext = {} } = {}) {

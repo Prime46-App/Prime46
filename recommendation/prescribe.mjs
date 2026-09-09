@@ -24,6 +24,8 @@ export function prescribe(candidate, { trainingHistory = [], adaptationHistory =
     ? { type:'standardized_assessment', inventedLoad:false }
     : { type:'derive_from_training_history', anchorEvidence:state.currentEvidence?.id ?? null, trajectoryEvent:training?.id ?? null, inventedLoad:false };
 
+  const evidenceAction = candidate.questType === 'assess' ? (state.currentEvidence ? 're_establish' : 'establish') : null;
+
   return {
     target:candidate.developmentalTarget,
     capability:candidate.capability,
@@ -34,5 +36,6 @@ export function prescribe(candidate, { trainingHistory = [], adaptationHistory =
     successCondition:candidate.questType === 'assess' ? 'Capture valid standardized evidence' : 'Complete the prescribed valid dose and record Adaptation',
     doseDecision,
     cardioRole:candidate.cardioRole ?? null,
+    evidenceAction,
   };
 }

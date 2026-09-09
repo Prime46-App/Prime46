@@ -17,3 +17,20 @@ const homeInputs=buildRecommendationInputs({state:{...state,currentContext:{avai
 assert.equal(homeInputs.currentContext.availableMethods.includes('pulldown'),false);
 assert.equal(homeInputs.currentContext.availableMethods.includes('pushup'),true);
 console.log('PASS PLAY integration adapter: measured state -> engine inputs -> recommendation');
+
+// QA-03: after recent Pull training, missing Balance evidence must surface as ESTABLISH/ASSESS,
+// never DEVELOP/MAINTAIN.
+const qa03State={
+  ...state,
+  trainingHistory:[{id:'qa03-pull',timestamp:'2026-09-09T11:41:38-07:00',capabilityTargets:['pull'],developmentalExposure:true,objectivePerformance:{completed:true}}],
+  adaptationHistory:[{id:'qa03-adapt',timestamp:'2026-09-09T11:41:38-07:00',capability:'pull',effort:'right',limitation:'none',capacityRemaining:'about_right'}]
+};
+const qa03Inputs=buildRecommendationInputs({state:qa03State,computed,now:new Date('2026-09-09T11:47:00-07:00').getTime()});
+const qa03=generateBodyRecommendation(qa03Inputs);
+assert.equal(qa03.recommended?.candidateId,'balance_assess');
+assert.equal(qa03.recommended?.quest?.questType,'assess');
+assert.equal(qa03.recommended?.quest?.intent,'assess');
+assert.equal(qa03.recommended?.quest?.evidenceAction,'establish');
+assert.equal(qa03.recommended?.quest?.target,'Establish Balance Baseline');
+assert.equal(qa03.recommended?.quest?.method,'balance_assessment');
+console.log('PASS QA-03: missing Balance evidence -> ESTABLISH BALANCE assessment, not DEVELOP/MAINTAIN');
