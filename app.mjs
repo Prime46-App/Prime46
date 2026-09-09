@@ -6,6 +6,7 @@ import {
 } from './engine.mjs';
 
 const STORAGE_KEY = 'prime46.body.mvp.v0.1';
+const clone = o => JSON.parse(JSON.stringify(o));
 const defaults = {
   profile: { name:'Don', age:46, sex:'male', heightFt:5, heightIn:8, bodyweightLb:168 },
   tests: {
@@ -25,7 +26,6 @@ const steps = [
 ];
 
 const $ = s => document.querySelector(s);
-const clone = o => JSON.parse(JSON.stringify(o));
 function loadState(){ try { return {...clone(defaults), ...JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}; } catch { return clone(defaults); } }
 function saveState(){ localStorage.setItem(STORAGE_KEY,JSON.stringify(state)); const el=$('#saveState'); if(el){el.textContent='SAVED';setTimeout(()=>el.textContent='LOCAL SAVE',700);} }
 function num(v){ const n=Number(v); return Number.isFinite(n)?n:null; }
