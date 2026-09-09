@@ -24,3 +24,6 @@ Run acceptance checks:
 node tests/recommendation/acceptance.mjs
 node tests/recommendation/playIntegration.mjs
 ```
+
+## v0.5 — Mobile UI Pass
+PRIME 46 is now explicitly mobile-first. PLAY, ACTIVE QUEST, CHARACTER, and ASSESSMENT layouts are optimized around smartphone use: compact hierarchy, thumb-friendly controls, reduced vertical dead space, dense Player State, and responsive desktop expansion. Recommendation Engine semantics are unchanged.

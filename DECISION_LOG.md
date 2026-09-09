@@ -316,3 +316,23 @@ Correction in Recommendation Engine v0.1.1:
 - Missing-evidence training candidates for Squat, Carry, Cardio, Mobility, and Balance are suppressed unless a deliberately foundational training path is explicitly allowed.
 
 Status: WORKING implementation correction. This fixes QA-03 without redefining locked architecture.
+
+## 2026-09-09 — MOBILE-FIRST PRODUCT DESIGN — LOCKED
+
+### Decision
+PRIME 46 is designed **mobile-first for smartphones**. The phone is the primary play surface; tablet and desktop layouts adapt outward from the smartphone experience rather than driving it.
+
+### Mobile design requirements
+- Prioritize thumb-friendly controls and one-hand use.
+- Keep TODAY and the current Quest visually dominant.
+- Reduce unnecessary vertical dead space and long-scroll friction.
+- Preserve dense, scannable Player State instead of stacking simple stats into tall rows.
+- Use readable game UI and touch targets appropriate for phones.
+- Keep Current Context compact while remaining easy to change.
+- Prevent overlays/badges from covering critical interactive controls where PRIME controls layout.
+- Desktop may become wider/richer, but must remain a responsive expansion of the phone-first hierarchy.
+
+### Implementation
+MOBILE UI PASS v0.5 applies the rule to PLAY, ACTIVE QUEST, CHARACTER, and ASSESSMENT presentation without changing Recommendation Engine semantics.
+
+Status: **LOCKED**
