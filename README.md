@@ -14,3 +14,13 @@ Static site. Upload `index.html`, `app.mjs`, `engine.mjs`, and `styles.css` to t
 
 ## Canon boundary
 `engine.mjs` remains the locked VESSEL v1.0 scoring implementation. v0.2 changes UX/presentation and adds the published Rockport estimator before feeding VO2max into the existing cardio score curve. XP values are not invented.
+
+## v0.4 PLAY Integration — WORKING
+PLAY is now wired to `recommendation/index.mjs` through `recommendation/appAdapter.mjs`.
+The live TODAY card is generated from stored assessment state, training/adaptation history, and current context. Quest acceptance and ADAPT logging are persisted locally. No XP or Level economy is fabricated.
+
+Run acceptance checks:
+```bash
+node tests/recommendation/acceptance.mjs
+node tests/recommendation/playIntegration.mjs
+```
