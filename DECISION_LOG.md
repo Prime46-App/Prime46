@@ -348,3 +348,13 @@ Status: **LOCKED**
 - ADAPT produces a visible recorded result and explicitly preserves demonstrated Capability until assessment/Boss verification.
 - Player-selected training is recorded as player_choice rather than PRIME-recommended.
 - Time available changes training dose volume; no load or capability is fabricated.
+
+
+## 2026-09-09 — BODY MVP v0.6 TRAINING & PROGRESS — WORKING BUILD
+- Milestone: PRIME remembers what the player did and shows whether they are becoming more.
+- Primary navigation implemented: PLAY · CHARACTER · TRAINING · PROGRESS.
+- TRAINING exposes persisted Training Events and paired ADAPT feedback.
+- ENDURE supports structured load / reps / sets plus optional notes for strength methods.
+- PROGRESS separates current verified Capability from Training trajectory.
+- Training does not alter demonstrated Capability; verified Assessment/Boss remains authoritative.
+- Scope remains BODY-first. XP economy, skill trees, other Dimensions, social systems, character evolution, and giant exercise library remain OPEN / out of v0.6 scope.
