@@ -336,3 +336,15 @@ PRIME 46 is designed **mobile-first for smartphones**. The phone is the primary 
 MOBILE UI PASS v0.5 applies the rule to PLAY, ACTIVE QUEST, CHARACTER, and ASSESSMENT presentation without changing Recommendation Engine semantics.
 
 Status: **LOCKED**
+
+## 2026-09-09 — MOBILE QA v0.5.1 BLOCKER FIX BATCH — WORKING
+- Browse BODY Activities is now functional and exposes evidence-supported normal Training Quests.
+- Assessment BACK is entry-aware: PLAY-directed assessment returns to PLAY instead of walking backward through baseline sequence.
+- Assessment CTA semantics distinguish SAVE RESULT from SKIP FOR NOW; incomplete skips do not create verified evidence.
+- Balance final assessment CTA now uses SAVE RESULT rather than VIEW CHARACTER SHEET.
+- Normal Training Quests now expose TARGET · METHOD · DOSE · INTENT · SUCCESS before action.
+- Quest lifecycle is visibly separated into ACT then ENDURE then ADAPT.
+- ENDURE accepts optional objective training notes plus EFFORT / LIMITATION / CAPACITY REMAINING.
+- ADAPT produces a visible recorded result and explicitly preserves demonstrated Capability until assessment/Boss verification.
+- Player-selected training is recorded as player_choice rather than PRIME-recommended.
+- Time available changes training dose volume; no load or capability is fabricated.

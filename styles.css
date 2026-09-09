@@ -145,3 +145,23 @@
   .player-state-strip b{font-size:11px}
   .today-card h2,.active-quest h2{font-size:29px}
 }
+
+/* v0.5.1 QA BLOCKER FIXES */
+.browse-panel{margin-top:12px;padding:12px;border:1px solid #3b3d42;background:#111318;border-radius:12px}
+.browse-panel[hidden]{display:none}
+.browse-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:8px}
+.browse-head h3{margin:3px 0;font-size:20px}
+.browse-head p{margin:0;font-size:11px;opacity:.72;line-height:1.35}
+.browse-head .ghost-btn{min-height:38px;padding:8px 10px}
+.browse-choice{width:100%;text-align:left}
+.prescription{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.prescription>div{border:1px solid #36383d;background:#15171b;padding:11px;border-radius:9px}
+.prescription>div:last-child{grid-column:1/-1}
+.prescription small{display:block;font-size:8px;letter-spacing:.12em;opacity:.65;margin-bottom:5px}
+.prescription b{font-size:12px;line-height:1.35}
+.endure-copy{font-weight:700;margin:10px 0 14px}
+.adapt-result{border:1px solid #5c5130;background:#17150f;padding:14px;border-radius:12px}
+.adapt-result span,.adapt-result small{display:block;font-size:8px;letter-spacing:.12em;opacity:.72}
+.adapt-result b{display:block;font-size:18px;margin:5px 0}
+.adapt-result p{font-size:12px;line-height:1.4;margin:6px 0 9px}
+@media(max-width:600px){.prescription{grid-template-columns:1fr}.prescription>div:last-child{grid-column:auto}.browse-head{display:block}.browse-head .ghost-btn{margin-top:8px;width:100%}}
