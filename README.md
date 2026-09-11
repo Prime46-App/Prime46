@@ -1,4 +1,4 @@
-# PRIME 46 — BODY MVP UI v0.2
+# PRIME 46 — BODY MVP v0.7
 Player One QA revision of the playable BODY / THE VESSEL MVP.
 
 ## What v0.2 fixes
@@ -21,9 +21,18 @@ The live TODAY card is generated from stored assessment state, training/adaptati
 
 Run acceptance checks:
 ```bash
+node tests/stateIntegrity.mjs
 node tests/recommendation/acceptance.mjs
 node tests/recommendation/playIntegration.mjs
 ```
 
 ## v0.5 — Mobile UI Pass
 PRIME 46 is now explicitly mobile-first. PLAY, ACTIVE QUEST, CHARACTER, and ASSESSMENT layouts are optimized around smartphone use: compact hierarchy, thumb-friendly controls, reduced vertical dead space, dense Player State, and responsive desktop expansion. Recommendation Engine semantics are unchanged.
+
+## v0.7 — State Integrity & Progress Evidence
+- Assessment input is drafted separately from verified Capability.
+- `SAVE RESULT` commits verified Assessment evidence and a historical snapshot.
+- `SKIP FOR NOW` discards the draft without changing Capability.
+- Legacy v0.1/v0.2 state migrates into the v0.7 schema.
+- Training logs use method-appropriate evidence fields for strength, Cardio, Mobility, and Balance.
+- PROGRESS shows verified Assessment history; Training remains separate from Capability.

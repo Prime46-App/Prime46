@@ -358,3 +358,14 @@ Status: **LOCKED**
 - PROGRESS separates current verified Capability from Training trajectory.
 - Training does not alter demonstrated Capability; verified Assessment/Boss remains authoritative.
 - Scope remains BODY-first. XP economy, skill trees, other Dimensions, social systems, character evolution, and giant exercise library remain OPEN / out of v0.6 scope.
+
+## 2026-09-11 — BODY MVP v0.7 STATE INTEGRITY & PROGRESS EVIDENCE — WORKING BUILD
+- Assessment entry now uses persisted drafts separate from verified `tests` evidence.
+- `SAVE RESULT` explicitly commits current Capability evidence and appends an Assessment-history snapshot.
+- `SKIP FOR NOW` discards the current draft and does not change demonstrated Capability.
+- Existing valid v0.1/v0.2 local state migrates to schema v7; legacy verified results remain usable.
+- Assessment entry source and current step persist across reload/direct navigation.
+- Training objective fields are selected by modality: strength, Cardio, Mobility, or Balance.
+- PROGRESS renders verified Assessment history and score/classification change without converting Training into Capability.
+- Cloudflare asset scope excludes repository metadata, tests, and canon/build documentation through `.assetsignore`.
+- LOCKED canon, scoring curves, navigation, and Recommendation Engine semantics remain unchanged.
