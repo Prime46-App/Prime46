@@ -66,7 +66,7 @@ const bible = read('PRODUCT_BIBLE.md');
 const linkedRepoFiles = new Set(
   [...`${index}\n${bible}`.matchAll(/`([^`]+\.(?:md|mjs|json))`/g)]
     .map((m) => m[1])
-    .filter((p) => !p.includes('*'))
+    .filter((p) => !p.includes('*') && !/\s/.test(p))
 );
 for (const file of linkedRepoFiles) {
   if (!exists(file)) fail(`Referenced repository file does not resolve: ${file}`);
