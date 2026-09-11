@@ -24,3 +24,23 @@ jobs:
         run: node tests/recommendation/acceptance.mjs
       - name: PLAY integration
         run: node tests/recommendation/playIntegration.mjs
+      - name: Production smoke
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://prime46.murphinsystems.workers.dev'
+          for attempt in {1..12}; do
+            home_code=$(curl -L -sS -o /tmp/prime-home.html -w '%{http_code}' "$base/")
+            bible_code=$(curl -L -sS -o /dev/null -w '%{http_code}' "$base/PRODUCT_BIBLE.md")
+            test_code=$(curl -L -sS -o /dev/null -w '%{http_code}' "$base/tests/sourceOfTruthIntegrity.mjs")
+            if [[ "$home_code" == '200' && "$bible_code" == '404' && "$test_code" == '404' ]]; then
+              grep -qi 'PRIME' /tmp/prime-home.html
+              echo "Production smoke PASS: home=200, Product Bible=404, tests=404"
+              exit 0
+            fi
+            echo "Waiting for production: home=$home_code bible=$bible_code tests=$test_code attempt=$attempt"
+            sleep 10
+          done
+          echo 'Production smoke failed after retries.' >&2
+          exit 1
