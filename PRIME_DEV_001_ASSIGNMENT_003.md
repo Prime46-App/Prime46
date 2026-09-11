@@ -1,7 +1,18 @@
 # PRIME-DEV-001 — ASSIGNMENT #003
 
-**Status: AUTHORIZED**
-**Execution state: NOT STARTED**
+**Status: COMPLETE**
+**Execution state: COMPLETE**
+**Completed:** 2026-09-11
+
+## Completion evidence
+- `PRODUCT_BIBLE.md` created as the canonical consolidation layer.
+- `SOURCE_OF_TRUTH_INDEX.md` created with fresh-agent read order and conflict rules.
+- `CURRENT_ASSIGNMENT.json` created as the machine-readable work-discovery pointer.
+- `tests/sourceOfTruthIntegrity.mjs` created and enforced in CI.
+- `.github/workflows/prime-integrity.yml` now runs source integrity, state integrity, Recommendation acceptance, PLAY integration, and production smoke checks on `main` pushes.
+- README onboarding now routes fresh PRIME-DEV-001 instances through repository source-of-truth infrastructure.
+- GitHub Actions verification passed for all suites and production smoke before closure.
+- LOCKED canon changed: No.
 
 ## Milestone
 **PRIME 46 — SOURCE-OF-TRUTH INFRASTRUCTURE v1.0**
@@ -47,7 +58,7 @@ This is a source-of-truth infrastructure milestone. It must not redesign PRIME 4
 7. Record document provenance sufficient to trace Product Bible sections back to existing LOCKED sources.
 8. Add an automated source-of-truth integrity check that verifies at minimum:
    - required governing documents exist
-   - exactly one assignment is `AUTHORIZED` at a time
+   - exactly one assignment is `AUTHORIZED` at a time while authorized work exists
    - completed assignments are not discoverable as active work
    - required status labels use approved vocabulary
    - Product Bible and source index links resolve to repository files
@@ -81,7 +92,7 @@ This is a source-of-truth infrastructure milestone. It must not redesign PRIME 4
 - Product Bible content is traceable to existing authoritative repository evidence.
 - `SOURCE_OF_TRUTH_INDEX.md` gives a fresh agent an unambiguous read order and conflict rule.
 - A fresh instance can identify the governing prompt, Product Bible, Decision Log, current specifications, current implementation, tests, deployment path, completed work, and currently authorized assignment from the repository alone.
-- Exactly one assignment is `AUTHORIZED`; Assignment #002 remains `COMPLETE`.
+- At most one assignment is `AUTHORIZED`; Assignment #002 remains `COMPLETE`; when no authorized assignment exists, the pointer is explicitly `IDLE`.
 - Decision statuses remain explicit and no WORKING/OPEN statement is silently promoted to LOCKED.
 - Automated source-of-truth integrity checks pass.
 - All pre-existing automated suites remain green.
@@ -97,7 +108,7 @@ Before declaring Assignment #003 complete, evaluate the repository as though no 
 - LOCKED Recommendation Engine pipeline
 - current implementation version and verified test commands
 - production URL and deployment path
-- currently authorized assignment
+- currently authorized assignment or explicit IDLE state
 - OPEN/WORKING items that must not be mistaken for canon
 
 Every manifest item must cite its controlling repository file. Any material item that cannot be reconstructed from repository evidence is a milestone defect, not permission to invent it.
@@ -109,6 +120,6 @@ Stop and request a decision if completing the Product Bible requires choosing be
 Use the PRIME-DEV-001 WORK CYCLE format from System Prompt v1.0. Clearly distinguish **VERIFIED · INFERRED · UNKNOWN** and report any unresolved source gap or canon conflict.
 
 ## Execution boundary
-This assignment is authorized for discovery by the automated PRIME-DEV-001 Wake Cycle. It must remain unexecuted in the Work session that created it.
+This assignment was authorized for discovery by the automated PRIME-DEV-001 Wake Cycle and was executed by that automated cycle without being manually started in the originating Work session.
 
 **PRESERVE THE TRUTH. THEN BUILD FROM IT.**
