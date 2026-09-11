@@ -56,10 +56,10 @@ pass('current-assignment pointer agrees with human-readable assignment state');
 
 const decisionLog = read('DECISION_LOG.md');
 const headingStatuses = [...decisionLog.matchAll(/^## .*?—\s*([A-Z]+)(?:\s*—|$)/gm)].map((m) => m[1]);
-const allowedDecisionStatuses = new Set(['LOCKED', 'WORKING', 'OPEN', 'SUPERSEDED']);
-const invalidStatuses = [...new Set(headingStatuses.filter((s) => !allowedDecisionStatuses.has(s)))];
-if (invalidStatuses.length) fail(`Decision Log contains unsupported decision status headings: ${invalidStatuses.join(', ')}`);
-pass('Decision Log status headings use approved vocabulary');
+const allowedHeadingStatuses = new Set(['LOCKED', 'WORKING', 'OPEN', 'SUPERSEDED', 'COMPLETE']);
+const invalidStatuses = [...new Set(headingStatuses.filter((s) => !allowedHeadingStatuses.has(s)))];
+if (invalidStatuses.length) fail(`Decision Log contains unsupported status headings: ${invalidStatuses.join(', ')}`);
+pass('Decision Log headings use approved decision statuses or COMPLETE work-state history');
 
 const index = read('SOURCE_OF_TRUTH_INDEX.md');
 const bible = read('PRODUCT_BIBLE.md');
