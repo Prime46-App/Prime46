@@ -1,0 +1,26 @@
+name: PRIME 46 Integrity
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source-of-truth integrity
+        run: node tests/sourceOfTruthIntegrity.mjs
+      - name: State integrity
+        run: node tests/stateIntegrity.mjs
+      - name: Recommendation acceptance
+        run: node tests/recommendation/acceptance.mjs
+      - name: PLAY integration
+        run: node tests/recommendation/playIntegration.mjs
