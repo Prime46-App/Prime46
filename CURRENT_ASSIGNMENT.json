@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "status": "IDLE",
-  "assignment": null,
-  "file": null,
-  "milestone": null
+  "status": "AUTHORIZED",
+  "assignment": 4,
+  "file": "PRIME_DEV_001_ASSIGNMENT_004.md",
+  "milestone": "PRIME 46 BODY MVP v0.8 — BOSS FIGHT & CLOSED PROGRESSION LOOP"
 }
