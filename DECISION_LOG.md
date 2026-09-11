@@ -369,3 +369,16 @@ Status: **LOCKED**
 - PROGRESS renders verified Assessment history and score/classification change without converting Training into Capability.
 - Cloudflare asset scope excludes repository metadata, tests, and canon/build documentation through `.assetsignore`.
 - LOCKED canon, scoring curves, navigation, and Recommendation Engine semantics remain unchanged.
+
+## 2026-09-11 — PRIME-DEV-001 ASSIGNMENT #002 — COMPLETE
+- Player One QA for BODY MVP v0.7 passed.
+- Assignment #002 is closed as COMPLETE.
+- Verified production implementation remains recorded in commits `acb7cf1` and `f221be2`.
+- No LOCKED canon changed during closure.
+
+## 2026-09-11 — PRIME-DEV-001 ASSIGNMENT #003 — AUTHORIZED / NOT STARTED
+- Milestone: PRIME 46 — SOURCE-OF-TRUTH INFRASTRUCTURE v1.0.
+- Objective: create the missing canonical Product Bible and repository reconstruction infrastructure without relying on conversational memory.
+- Assignment #003 is authorized for the automated PRIME-DEV-001 Wake Cycle.
+- Execution is intentionally deferred; this authorization commit does not execute Assignment #003.
+- No LOCKED canon changed.
