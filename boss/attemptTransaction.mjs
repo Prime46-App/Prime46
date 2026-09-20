@@ -1,4 +1,4 @@
-import { clone, ASSESSMENT_IDS } from '../state.mjs';
+import { clone, ASSESSMENT_IDS, canonicalBossMetric } from '../state.mjs';
 
 // Assignment #004: this module has no UI or persistence side effects. Call only after
 // a canonical, completed assessment has produced verified computed evidence.
@@ -17,7 +17,9 @@ export function recordBossAttempt(state, {
   if (typeof computedEvidence.verified === 'boolean' && !computedEvidence.verified) throw new Error('Unverified result');
   const previous = state.bosses?.[capability];
   if (!previous || !Number.isFinite(previous.undefeatedBossTarget)) throw new Error('Verified undefeated Boss target required');
-  if (!Number.isFinite(currentResult)) throw new Error('Comparable standardized Boss result required');
+  const canonicalResult=canonicalBossMetric(capability,rawResult,computedEvidence);
+  if (!Number.isFinite(currentResult)) currentResult=canonicalResult;
+  if (!Number.isFinite(currentResult)||currentResult!==canonicalResult) throw new Error('Comparable standardized Boss result required');
   const id = attemptId ?? `boss-${capability}-${timestamp}`;
   if (typeof id !== 'string' || !id.trim()) throw new Error('Boss attempt ID required');
   if (state.bossHistory?.some(x => x.id === id) || state.assessmentHistory?.some(x => x.id === id)) throw new Error('Duplicate Boss attempt');
@@ -35,7 +37,8 @@ export function recordBossAttempt(state, {
   const nextTests = {...clone(state.tests ?? {}), [capability]:clone(rawResult)};
   const nextBoss = {...clone(previous),currentVerifiedResult:currentResult,
     undefeatedBossTarget:snapshot.undefeatedBossTarget,developmentalReadiness:false,
-    todayReadiness:null,lastAttemptAt:timestamp,readinessEvidence:[],lastVerdict:verdict};
+    todayReadiness:null,lastAttemptAt:timestamp,cycleStartedAt:timestamp,
+    readinessEstablishedAt:null,readinessEvidence:[],lastVerdict:verdict};
   const nextBosses = {...clone(state.bosses ?? {}),[capability]:nextBoss};
   const nextBossHistory = [...clone(state.bossHistory ?? []),clone(snapshot)];
   const nextAssessmentHistory = [...clone(state.assessmentHistory ?? []),clone(snapshot)];

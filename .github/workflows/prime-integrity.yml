@@ -24,6 +24,8 @@ jobs:
         run: node tests/recommendation/acceptance.mjs
       - name: PLAY integration
         run: node tests/recommendation/playIntegration.mjs
+      - name: Boss lifecycle regression
+        run: node tests/boss/attemptTransaction.mjs
       - name: Production smoke
         if: github.event_name == 'push'
         shell: bash

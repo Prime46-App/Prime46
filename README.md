@@ -1,4 +1,4 @@
-# PRIME 46 — BODY MVP v0.7
+# PRIME 46 — BODY MVP v0.8 CANDIDATE
 
 Player One QA revision of the playable BODY / THE VESSEL MVP.
 
@@ -16,7 +16,8 @@ Do not reconstruct PRIME 46 from conversational memory or implementation code wh
 
 ## Current product state
 
-- Current implementation: **BODY MVP v0.7 — State Integrity & Progress Evidence**
+- Current feature candidate: **BODY MVP v0.8 — Boss Fight & Closed Progression Loop**
+- Production remains v0.7 until a separate Owner merge decision advances this candidate to `main`.
 - Canonical product authority: `PRODUCT_BIBLE.md`
 - Canon/history: `DECISION_LOG.md`
 - LOCKED BODY scoring contract: `VESSEL_IMPLEMENTATION_SPEC_v1.0.md`
@@ -54,6 +55,16 @@ PRIME 46 is explicitly mobile-first. PLAY, ACTIVE QUEST, CHARACTER, and ASSESSME
 - Training logs use method-appropriate evidence fields for strength, Cardio, Mobility, and Balance.
 - PROGRESS shows verified Assessment history; Training remains separate from Capability.
 
+## v0.8 candidate — Boss Fight & Closed Progression Loop
+
+- Verified assessments establish persistent Boss baselines without fabricating readiness.
+- Qualifying post-baseline development can establish readiness; completion or time alone cannot.
+- PRIME-recommended and player-initiated rematches use the canonical assessment and retain distinct provenance.
+- Boss attempts atomically update current verified reality, history, verdict, undefeated target, and readiness reset.
+- Regression updates current reality without lowering the undefeated Boss target.
+- PROGRESS displays Boss verdicts separately from current verified Capability.
+- State schema v8 migrates valid v0.7 player evidence and Boss history.
+
 ## Test commands
 
 ```bash
@@ -61,6 +72,7 @@ node tests/sourceOfTruthIntegrity.mjs
 node tests/stateIntegrity.mjs
 node tests/recommendation/acceptance.mjs
 node tests/recommendation/playIntegration.mjs
+node tests/boss/attemptTransaction.mjs
 ```
 
 ## Deployment
