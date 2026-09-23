@@ -14,7 +14,7 @@ env:
 
 jobs:
   mobile-acceptance:
-    if: ${{ github.run_number == 2 }}
+    if: ${{ github.run_number == 3 }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -273,14 +273,16 @@ jobs:
             report.verified.push('Boss transaction persisted verdict, Capability update, provenance, target update, and readiness reset');
 
             const routes = [
-              ['sheet', 'PLAYER ONE // BODY'],
-              ['training', 'WORK HISTORY'],
-              ['progress', 'BECOMING MORE'],
-              ['play', 'TODAY']
+              ['sheet', '.character-sheet', 'PLAYER ONE // BODY'],
+              ['training', '.game-hub', 'WORK HISTORY'],
+              ['progress', '.game-hub', 'BECOMING MORE'],
+              ['play', '.play-screen', 'TODAY']
             ];
-            for (const [route, marker] of routes) {
+            for (const [route, container, marker] of routes) {
               await page.locator('.primary-nav [data-nav="' + route + '"]').click();
               await page.waitForFunction(expected => location.hash === '#' + expected, route);
+              await page.locator(container).waitFor({ state: 'visible' });
+              await page.waitForFunction(expectedMarker => document.body.innerText.includes(expectedMarker), marker);
               const routeText = await bodyText();
               assert.ok(routeText.includes(marker), route + ': expected marker not rendered');
               await verifyViewport(route.toUpperCase());
