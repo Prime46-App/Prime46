@@ -181,3 +181,37 @@ Until then:
 - report the blocker once and remain stopped.
 
 When the unblock condition is met, PRIME-DEV-001 owns execution of the acceptance test, evidence preservation, and PASS/FAIL report.
+
+
+## Atlas runtime attempt — 2026-09-23
+
+**Status:** FAIL — BLOCKED BEFORE ACCEPTANCE TEST.
+
+Owner supplied the PRIME-DEV-001 Atlas mobile acceptance report for PR #1 candidate commit `2deac01fd00d6f409428f226ec1576845ea0da6f`.
+
+Verified runtime evidence from that attempt:
+- required viewport: 390 × 844;
+- actual browser viewport: 1363 × 936;
+- runtime: Atlas cloud Chrome/CDP;
+- reported `window.innerWidth`: 1363;
+- reported `window.innerHeight`: 936;
+- device pixel ratio: 1;
+- exposed viewport/device-emulation capability: NONE;
+- gameplay acceptance checks: NOT RUN;
+- repository changes: NONE;
+- deployment changes: NONE;
+- PR #1 remains draft / unmerged.
+
+This second independent runtime attempt confirms that the currently exposed ChatGPT Work and Atlas cloud browser surfaces do not satisfy the mobile acceptance precondition. Do not repeat either runtime path unless their capabilities materially change.
+
+### Remaining blocker
+PRIME-DEV-001 still requires an authorized browser execution environment that can explicitly establish and verify a 390 × 844 viewport and interact with the candidate app.
+
+A CI/headless browser path may satisfy this requirement if it can:
+1. run the exact PR #1 candidate;
+2. establish and verify 390 × 844;
+3. exercise the player-facing Boss flow;
+4. preserve objective screenshots/trace/log evidence;
+5. return PASS/FAIL without merge or production deployment.
+
+No such CI browser workflow is currently present in the repository; the existing `.github/workflows/prime-integrity.yml` runs Node/integrity tests and production smoke only.
