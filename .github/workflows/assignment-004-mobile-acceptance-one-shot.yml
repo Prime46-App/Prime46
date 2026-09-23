@@ -14,7 +14,7 @@ env:
 
 jobs:
   mobile-acceptance:
-    if: ${{ github.run_number == 3 }}
+    if: ${{ github.run_number == 4 }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -65,10 +65,10 @@ jobs:
           cat /tmp/prime46-http.log || true
           exit 1
 
-      - name: Execute 390x844 player-facing Boss acceptance
+      - name: Execute 390x844 production Boss acceptance
         shell: bash
         env:
-          BASE_URL: http://127.0.0.1:4173
+          BASE_URL: https://prime46.murphinsystems.workers.dev
         run: |
           set -euo pipefail
           cat > /tmp/prime-ci/mobile-acceptance.mjs <<'NODE'
