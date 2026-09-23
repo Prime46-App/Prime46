@@ -347,7 +347,9 @@ Desktop expands from the phone-first hierarchy.
 
 ## 16. Current Implementation State — WORKING
 
-Current repository/application version: **PRIME 46 BODY MVP v0.7 — State Integrity & Progress Evidence**.
+Current production version: **PRIME 46 BODY MVP v0.7 — State Integrity & Progress Evidence**.
+
+Current authorized feature candidate: **PRIME 46 BODY MVP v0.8 — Boss Fight & Closed Progression Loop**. It is not production until separately approved and merged to `main`.
 
 Verified milestone behavior recorded in Assignment #002 / README:
 - assessment input drafts are separate from verified Capability
@@ -368,6 +370,7 @@ Current automated suites:
 - `node tests/stateIntegrity.mjs`
 - `node tests/recommendation/acceptance.mjs`
 - `node tests/recommendation/playIntegration.mjs`
+- `node tests/boss/attemptTransaction.mjs`
 
 **Provenance:** `README.md`; `PRIME_DEV_001_ASSIGNMENT_002.md`; repository tree.
 

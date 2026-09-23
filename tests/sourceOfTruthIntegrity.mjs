@@ -19,7 +19,8 @@ const required = [
   'README.md',
   'tests/stateIntegrity.mjs',
   'tests/recommendation/acceptance.mjs',
-  'tests/recommendation/playIntegration.mjs'
+  'tests/recommendation/playIntegration.mjs',
+  'tests/boss/attemptTransaction.mjs'
 ];
 
 for (const file of required) {
@@ -77,7 +78,8 @@ const expectedCommands = [
   'node tests/sourceOfTruthIntegrity.mjs',
   'node tests/stateIntegrity.mjs',
   'node tests/recommendation/acceptance.mjs',
-  'node tests/recommendation/playIntegration.mjs'
+  'node tests/recommendation/playIntegration.mjs',
+  'node tests/boss/attemptTransaction.mjs'
 ];
 for (const command of expectedCommands) {
   if (!index.includes(command) && !read('README.md').includes(command)) fail(`Missing referenced test command: ${command}`);

@@ -46,6 +46,7 @@
    - `tests/stateIntegrity.mjs`
    - `tests/recommendation/acceptance.mjs`
    - `tests/recommendation/playIntegration.mjs`
+   - `tests/boss/attemptTransaction.mjs`
 
 ## Conflict rule
 
@@ -104,6 +105,7 @@ node tests/sourceOfTruthIntegrity.mjs
 node tests/stateIntegrity.mjs
 node tests/recommendation/acceptance.mjs
 node tests/recommendation/playIntegration.mjs
+node tests/boss/attemptTransaction.mjs
 ```
 
 ## Production

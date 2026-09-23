@@ -382,3 +382,12 @@ Status: **LOCKED**
 - Assignment #003 is authorized for the automated PRIME-DEV-001 Wake Cycle.
 - Execution is intentionally deferred; this authorization commit does not execute Assignment #003.
 - No LOCKED canon changed.
+
+## 2026-09-20 — BODY MVP v0.8 BOSS LOOP — WORKING BUILD
+- Assignment #004 feature candidate integrates the canonical Boss transaction with assessment saving, provenance, persistence, PROGRESS history, readiness consumption, and subsequent Recommendation Engine input.
+- Verdicts remain exactly BOSS_DEFEATED / STALEMATE / BOSS_SURVIVES under the existing LOCKED comparison rules.
+- Worse verified performance updates current reality without lowering the undefeated Boss target.
+- Training completion and time alone do not create readiness; implementation requires explicit transfer evidence or an objective comparable post-cycle trajectory before readiness is established.
+- Once established, readiness is not removed by refusal or later context; a legitimate Boss attempt consumes it and begins a new developmental cycle.
+- State schema v8 migrates valid v0.7 evidence and preserves Boss history.
+- This entry records implementation evidence only. It does not change LOCKED canon or authorize merge/deployment.
