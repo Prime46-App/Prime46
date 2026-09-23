@@ -14,7 +14,7 @@ env:
 
 jobs:
   mobile-acceptance:
-    if: ${{ github.run_number == 4 }}
+    if: ${{ github.run_number == 5 }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
