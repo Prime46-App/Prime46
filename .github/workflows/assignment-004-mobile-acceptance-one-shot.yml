@@ -1,0 +1,340 @@
+name: PRIME Assignment 004 Mobile Acceptance One-Shot
+
+on:
+  push:
+    branches:
+      - ci/assignment-004-mobile-acceptance-20260923
+
+permissions:
+  contents: read
+
+env:
+  CANDIDATE_SHA: 2deac01fd00d6f409428f226ec1576845ea0da6f
+  TEST_PORT: "4173"
+
+jobs:
+  mobile-acceptance:
+    if: ${{ github.run_number == 1 }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout exact Assignment #004 candidate
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.CANDIDATE_SHA }}
+          fetch-depth: 1
+
+      - name: Verify exact candidate and preserve boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          actual="$(git rev-parse HEAD)"
+          echo "Candidate HEAD: $actual"
+          test "$actual" = "$CANDIDATE_SHA"
+          test -z "$(git status --porcelain)"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install isolated Playwright Chromium runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/prime-ci
+          cd /tmp/prime-ci
+          npm init -y >/dev/null 2>&1
+          npm install --no-fund --no-audit playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Start exact candidate locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m http.server "$TEST_PORT" --bind 127.0.0.1 > /tmp/prime46-http.log 2>&1 &
+          echo $! > /tmp/prime46-http.pid
+          for attempt in {1..30}; do
+            if curl -fsS "http://127.0.0.1:$TEST_PORT/" >/dev/null; then
+              echo "Local candidate server ready."
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/prime46-http.log || true
+          exit 1
+
+      - name: Execute 390x844 player-facing Boss acceptance
+        shell: bash
+        env:
+          BASE_URL: http://127.0.0.1:4173
+        run: |
+          set -euo pipefail
+          cat > /tmp/prime-ci/mobile-acceptance.mjs <<'NODE'
+          import assert from 'node:assert/strict';
+          import fs from 'node:fs';
+          import path from 'node:path';
+          import { chromium } from 'playwright';
+
+          const baseUrl = process.env.BASE_URL;
+          const candidateSha = process.env.CANDIDATE_SHA;
+          const artifactDir = path.join(process.env.GITHUB_WORKSPACE, 'artifacts', 'mobile-acceptance');
+          fs.mkdirSync(artifactDir, { recursive: true });
+
+          const report = {
+            candidateSha,
+            requiredViewport: { width: 390, height: 844 },
+            runtime: 'GitHub Actions ubuntu-latest + Playwright Chromium 1.55.0',
+            precondition: 'Deterministic persisted Player State seeded only to establish an authorized PUSH Boss rematch at prior verified result 20 reps.',
+            status: 'UNKNOWN',
+            verified: [],
+            failures: [],
+            pageErrors: [],
+            viewportObservations: [],
+            persistedState: null
+          };
+
+          const seed = {
+            schemaVersion: 8,
+            profile: { name: 'Don', age: 46, sex: 'male', heightFt: 5, heightIn: 8, bodyweightLb: 168 },
+            tests: {
+              push: { reps: '20' },
+              pull: { reps: '' },
+              squat: { oneRmLb: '', estimated: false },
+              carry: { totalLoadLb: '', distanceM: 40, timeSec: '', completed: false },
+              cardio: { walkMin: '', walkSec: '', finishHr: '', vo2: '', method: 'rockport' },
+              mobility: {
+                deep: { depth: null, heels: null, balance: null, returnStand: null, compensation: null },
+                over: { overhead: null, elbows: null, trunkComp: null, symmetry: null },
+                limiter: ''
+              },
+              balance: { leftSec: '', rightSec: '' }
+            },
+            assessmentDrafts: {},
+            assessmentHistory: [],
+            assessmentSession: { entry: 'sequence', step: 0, mode: 'assessment', bossProvenance: null },
+            trainingHistory: [],
+            adaptationHistory: [],
+            bossHistory: [],
+            constraints: [],
+            goals: [],
+            bosses: {
+              push: {
+                capability: 'push',
+                benchmarkResult: 20,
+                currentVerifiedResult: 20,
+                undefeatedBossTarget: 20,
+                developmentalReadiness: true,
+                todayReadiness: true,
+                readinessEvidence: ['ci-mobile-acceptance-precondition'],
+                cycleStartedAt: '2026-09-20T00:00:00.000Z',
+                lastAttemptAt: null,
+                lastVerdict: null
+              }
+            },
+            preference: null,
+            currentContext: {
+              availableMinutes: 60,
+              location: 'gym',
+              muscleSoreness: false,
+              stiffness: false,
+              cardioCompanion: false,
+              cardioAllowed: true
+            },
+            activeQuest: null,
+            lastAdaptSummary: null
+          };
+
+          const browser = await chromium.launch({ headless: true });
+          const context = await browser.newContext({
+            viewport: { width: 390, height: 844 },
+            screen: { width: 390, height: 844 },
+            deviceScaleFactor: 1,
+            isMobile: true,
+            hasTouch: true
+          });
+          await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
+
+          const page = await context.newPage();
+          page.on('pageerror', error => report.pageErrors.push(error.message));
+
+          const screenshot = async name => {
+            await page.screenshot({ path: path.join(artifactDir, name), fullPage: true });
+          };
+
+          const bodyText = async () => (await page.locator('body').innerText()).replace(/\s+/g, ' ').trim();
+
+          const verifyViewport = async label => {
+            const observed = await page.evaluate(() => ({
+              innerWidth: window.innerWidth,
+              innerHeight: window.innerHeight,
+              visualWidth: window.visualViewport?.width ?? null,
+              visualHeight: window.visualViewport?.height ?? null,
+              screenWidth: window.screen.width,
+              screenHeight: window.screen.height,
+              devicePixelRatio: window.devicePixelRatio
+            }));
+            report.viewportObservations.push({ label, ...observed });
+            assert.equal(observed.innerWidth, 390, label + ': window.innerWidth must be 390');
+            assert.equal(observed.innerHeight, 844, label + ': window.innerHeight must be 844');
+            assert.equal(Math.round(observed.visualWidth), 390, label + ': visual viewport width must be 390');
+            assert.equal(Math.round(observed.visualHeight), 844, label + ': visual viewport height must be 844');
+            report.verified.push(label + ': exact 390x844 viewport verified');
+          };
+
+          const verifyPrimaryNav = async label => {
+            const nav = page.locator('.primary-nav');
+            await nav.waitFor({ state: 'visible' });
+            for (const route of ['play', 'sheet', 'training', 'progress']) {
+              const button = nav.locator('[data-nav="' + route + '"]');
+              assert.equal(await button.count(), 1, label + ': missing nav route ' + route);
+              assert.equal(await button.isVisible(), true, label + ': nav route not visible ' + route);
+              const box = await button.boundingBox();
+              assert.ok(box, label + ': no bounding box for ' + route);
+              assert.ok(box.x >= -1 && box.x + box.width <= 391, label + ': ' + route + ' nav control exceeds 390px viewport');
+            }
+            report.verified.push(label + ': PLAY / CHARACTER / TRAINING / PROGRESS controls visible within viewport');
+          };
+
+          let failure = null;
+          try {
+            await page.goto(baseUrl + '/', { waitUntil: 'networkidle' });
+            await verifyViewport('initial browser');
+
+            await page.evaluate(({ key, value }) => localStorage.setItem(key, JSON.stringify(value)), {
+              key: 'prime46.body.mvp.v0.8',
+              value: seed
+            });
+
+            await page.goto(baseUrl + '/#play', { waitUntil: 'networkidle' });
+            await page.locator('.play-screen').waitFor({ state: 'visible' });
+            await verifyViewport('PLAY');
+            await verifyPrimaryNav('PLAY');
+
+            const recommendationTitle = (await page.locator('.today-card h2').innerText()).trim();
+            assert.equal(recommendationTitle, 'FIGHT YOUR PUSH BOSS', 'PRIME must surface the prepared PUSH Boss as the recommendation');
+            const fightButton = page.locator('.today-card button[data-accept-rec="0"]');
+            assert.equal((await fightButton.innerText()).trim(), 'FIGHT YOUR BOSS');
+            report.verified.push('PRIME surfaced the authorized PUSH Boss rematch through PLAY');
+            await screenshot('01-play-boss-recommended.png');
+
+            await fightButton.click();
+            await page.locator('.assessment').waitFor({ state: 'visible' });
+            let text = await bodyText();
+            assert.ok(text.includes('BOSS FIGHT'), 'Boss assessment screen must identify BOSS FIGHT');
+            assert.ok(text.includes('YOU, LAST TIME'), 'Boss screen must preserve prior-self framing');
+            assert.ok(text.includes('STRICT PUSH-UPS'), 'Canonical PUSH assessment must be used');
+            assert.equal(await page.locator('#push').isVisible(), true);
+            report.verified.push('Boss recommendation entered the canonical standardized PUSH assessment');
+            await screenshot('02-boss-assessment.png');
+
+            await page.locator('#push').fill('21');
+            await page.waitForFunction(() => document.querySelector('#next')?.textContent?.trim() === 'SAVE BOSS RESULT');
+            assert.equal((await page.locator('#next').innerText()).trim(), 'SAVE BOSS RESULT');
+            await screenshot('03-boss-result-ready.png');
+
+            await page.locator('#next').click();
+            await page.waitForFunction(() => location.hash === '#progress');
+            await page.locator('.boss-history').waitFor({ state: 'visible' });
+            text = await bodyText();
+            assert.ok(text.includes('BOSS DEFEATED'), 'Progress must show BOSS DEFEATED');
+            assert.ok(text.includes('21 REPS CURRENT'), 'Progress must show the new current verified result');
+            assert.ok(text.includes('21 REPS UNDEFEATED TARGET'), 'Progress must advance undefeated target after improvement');
+            report.verified.push('Saving 21 reps produced BOSS_DEFEATED and routed to PROGRESS');
+            await verifyViewport('PROGRESS after Boss');
+            await verifyPrimaryNav('PROGRESS after Boss');
+            await screenshot('04-progress-boss-defeated.png');
+
+            const persisted = await page.evaluate(() => JSON.parse(localStorage.getItem('prime46.body.mvp.v0.8')));
+            assert.equal(persisted.tests.push.reps, '21');
+            assert.equal(persisted.bossHistory.length, 1);
+            assert.equal(persisted.bossHistory[0].verdict, 'BOSS_DEFEATED');
+            assert.equal(persisted.bossHistory[0].initiation, 'prime_recommended');
+            assert.equal(persisted.bosses.push.currentVerifiedResult, 21);
+            assert.equal(persisted.bosses.push.undefeatedBossTarget, 21);
+            assert.equal(persisted.bosses.push.developmentalReadiness, false);
+            assert.deepEqual(persisted.bosses.push.readinessEvidence, []);
+            assert.equal(persisted.assessmentHistory.at(-1).source, 'boss_attempt');
+            report.persistedState = {
+              testsPushReps: persisted.tests.push.reps,
+              bossHistoryCount: persisted.bossHistory.length,
+              verdict: persisted.bossHistory[0].verdict,
+              initiation: persisted.bossHistory[0].initiation,
+              currentVerifiedResult: persisted.bosses.push.currentVerifiedResult,
+              undefeatedBossTarget: persisted.bosses.push.undefeatedBossTarget,
+              developmentalReadiness: persisted.bosses.push.developmentalReadiness,
+              readinessEvidenceCount: persisted.bosses.push.readinessEvidence.length,
+              lastAssessmentSource: persisted.assessmentHistory.at(-1).source
+            };
+            report.verified.push('Boss transaction persisted verdict, Capability update, provenance, target update, and readiness reset');
+
+            const routes = [
+              ['sheet', 'PLAYER ONE // BODY'],
+              ['training', 'WORK HISTORY'],
+              ['progress', 'BECOMING MORE'],
+              ['play', 'TODAY']
+            ];
+            for (const [route, marker] of routes) {
+              await page.locator('.primary-nav [data-nav="' + route + '"]').click();
+              await page.waitForFunction(expected => location.hash === '#' + expected, route);
+              const routeText = await bodyText();
+              assert.ok(routeText.includes(marker), route + ': expected marker not rendered');
+              await verifyViewport(route.toUpperCase());
+              await verifyPrimaryNav(route.toUpperCase());
+            }
+            report.verified.push('PLAY, CHARACTER, TRAINING, and PROGRESS remained interactive at 390x844');
+
+            const postBossTitle = (await page.locator('.today-card h2').innerText()).trim();
+            assert.notEqual(postBossTitle, 'FIGHT YOUR PUSH BOSS', 'Post-attempt recommendation must not immediately re-recommend the consumed Boss');
+            report.verified.push('Post-Boss recommendation reflects readiness consumption');
+
+            await page.locator('.primary-nav [data-nav="progress"]').click();
+            await page.waitForFunction(() => location.hash === '#progress');
+            await page.reload({ waitUntil: 'networkidle' });
+            await verifyViewport('PROGRESS after reload');
+            text = await bodyText();
+            assert.ok(text.includes('BOSS DEFEATED'), 'Boss verdict must survive reload');
+            assert.ok(text.includes('21 REPS CURRENT'), 'Current Boss result must survive reload');
+            assert.ok(text.includes('21 REPS UNDEFEATED TARGET'), 'Boss target must survive reload');
+            report.verified.push('Boss verdict and updated verified state survived a browser reload');
+            await screenshot('05-progress-after-reload.png');
+
+            assert.deepEqual(report.pageErrors, [], 'Browser page errors occurred: ' + report.pageErrors.join(' | '));
+            report.status = 'PASS';
+          } catch (error) {
+            failure = error;
+            report.status = 'FAIL';
+            report.failures.push(error?.stack || error?.message || String(error));
+            try { await screenshot('FAILURE.png'); } catch {}
+          } finally {
+            try {
+              await context.tracing.stop({ path: path.join(artifactDir, 'trace.zip') });
+            } catch (traceError) {
+              report.failures.push('Trace preservation error: ' + traceError.message);
+              if (report.status === 'PASS') report.status = 'FAIL';
+              failure ||= traceError;
+            }
+            fs.writeFileSync(path.join(artifactDir, 'report.json'), JSON.stringify(report, null, 2));
+            console.log(JSON.stringify(report, null, 2));
+            await browser.close();
+          }
+
+          if (failure) throw failure;
+          NODE
+
+          node /tmp/prime-ci/mobile-acceptance.mjs
+
+      - name: Show local server log on failure
+        if: failure()
+        shell: bash
+        run: cat /tmp/prime46-http.log || true
+
+      - name: Preserve mobile acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: prime-assignment-004-mobile-acceptance
+          path: artifacts/mobile-acceptance
+          if-no-files-found: warn
+          retention-days: 30
