@@ -1,6 +1,6 @@
 # PRIME 46 — PLAYER ONE WORKOUT HISTORY
 
-Status: historical owner-reported observations; not product canon or app integration. Reconstructed 2026-09-20. Dates marked EXACT are explicitly supplied or anchored by dated same-day conversation; INFERRED dates are derived from 'yesterday' and message timestamps; UNKNOWN means workout date cannot be established. No automatic app ingestion or synchronization is claimed. A later retelling of the same performance is not a second workout. Machine loads and distances are machine-specific. All weights lb.
+Status: historical owner-reported observations; not product canon or app integration. Reconstructed 2026-09-20; updated 2026-09-22. Dates marked EXACT are explicitly supplied or anchored by dated same-day conversation; INFERRED dates are derived from 'yesterday' and message timestamps; UNKNOWN means workout date cannot be established. No automatic app ingestion or synchronization is claimed. A later retelling of the same performance is not a second workout. Machine loads and distances are machine-specific. All weights lb.
 
 ## Dated sessions
 
@@ -41,6 +41,14 @@ Status: historical owner-reported observations; not product canon or app integra
 - Machine chest fly: 60 × 10; 70 × 10; 110 × 10; 90 × 10.
 - Elliptical second bout: machine-reported 1 mile / 10:00, same incline 10 and resistance 8; HR UNKNOWN.
 
+### 2026-09-22 — EXACT (same-day report; pull workout)
+- Elliptical warm-up: 11 min; machine-reported 1 mile; incline 10; resistance 8; HR unavailable.
+- Neutral-grip seated row: 100 × 12; 145 × 8; 145 × 7; then 145 × 6 immediately followed by 100 × 6 as a drop set. Total row volume from reported machine load: 4,845 lb.
+- Neutral-grip pulldown: 100 × 8 × 2. Total pulldown volume: 1,600 lb.
+- Total recorded resistance volume for rows + pulldowns: 6,445 lb; 55 total reps. Machine-specific loads.
+- Planned hip-hinge, face pulls, trunk work, and cardio cooldown were NOT performed; do not record them as completed.
+- Sauna: 25 min; 5-min break with cold shower; then sauna 10 min; followed by another cold shower. Total sauna exposure: 35 min. Cold-shower durations not reported.
+
 ## Undated performance observations (NOT assigned workout dates)
 - Reported 2026-09-07: standing farmer hold 35 lb per hand for 2 min; push-ups 40 continuous; pull-ups 5, affected by prior distal-biceps tear; bodyweight squats 30; dips 22. These are assessment observations, not necessarily one gym workout.
 - Reported 2026-09-07: single-leg balance >90 sec each leg; test ceiling reached, actual maxima unknown.
@@ -51,5 +59,5 @@ Status: historical owner-reported observations; not product canon or app integra
 ## Provenance and limitations
 - Primary source: Don's first-person messages in PRIME 46 conversation, dated September 3, 7, 8, 12, 19 and 20, 2026, and August 29 baseline context. Dates of messages are not always dates of workouts; inferred dates explicitly marked.
 - Additional cross-chat personal-context retrieval found September 18 and September 20 workout summaries and August 29 baseline, but did not establish an exhaustive search of every historical chat. This file is a recovered subset, NOT a certified complete history.
-- Earlier assistant arithmetic and evaluative labels are not authoritative. For example, September 8 leg-press volume computes to 18,750 lb; September 20 incline bench 3,825 lb. Do not promote prior assistant guesses about 1RM, percentiles, or clinical fitness to measured data.
+- Earlier assistant arithmetic and evaluative labels are not authoritative. For example, September 8 leg-press volume computes to 19,350 lb; September 20 incline bench 3,825 lb. Do not promote prior assistant guesses about 1RM, percentiles, or clinical fitness to measured data.
 - Preserve append-only history; corrections should explain what changed and why. Separate exact session dates, inferred dates, and unknown dates. No workouts automatically imported into PRIME 46 application.
