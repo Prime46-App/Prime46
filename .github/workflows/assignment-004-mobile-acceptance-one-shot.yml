@@ -14,7 +14,7 @@ env:
 
 jobs:
   mobile-acceptance:
-    if: ${{ github.run_number == 1 }}
+    if: ${{ github.run_number == 2 }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -207,7 +207,10 @@ jobs:
               value: seed
             });
 
-            await page.goto(baseUrl + '/#play', { waitUntil: 'networkidle' });
+            // Full reload is required so PRIME rebuilds its in-memory state from the seeded persisted state.
+            await page.reload({ waitUntil: 'networkidle' });
+            await page.evaluate(() => { location.hash = '#play'; });
+            await page.waitForFunction(() => location.hash === '#play');
             await page.locator('.play-screen').waitFor({ state: 'visible' });
             await verifyViewport('PLAY');
             await verifyPrimaryNav('PLAY');
