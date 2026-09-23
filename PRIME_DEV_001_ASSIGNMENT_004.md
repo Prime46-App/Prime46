@@ -151,3 +151,33 @@ Next action:
 Do not expand scope after satisfying this assignment.
 
 **BUILT. NOT GIVEN.**
+
+
+## Runtime blocker — 2026-09-23
+
+**Execution status:** BLOCKED — mobile acceptance test not executed.
+
+A fresh ChatGPT Work execution attempt was made under the Owner's explicit instruction to resume Assignment #004 and execute the required **390 × 844** mobile acceptance test.
+
+Observed result:
+- available authorized browser runtime: fixed desktop Chrome;
+- viewport/device-emulation control: unavailable;
+- required 390 × 844 acceptance test: NOT EXECUTED;
+- PASS/FAIL: NOT CLAIMED;
+- repository changes during blocked attempt: NONE;
+- PR changes during blocked attempt: NONE;
+- deployment/configuration changes during blocked attempt: NONE.
+
+This is now a verified runtime-access blocker, not an unresolved Owner-start trigger.
+
+### Precise unblock condition
+Resume Assignment #004 only when an **authorized browser runtime exists that can explicitly set or emulate a 390 × 844 smartphone viewport** and inspect the player-facing flow.
+
+Until then:
+- do not repeat the same fixed-desktop investigation;
+- do not ask the Owner to perform the QA manually;
+- do not merge PR #1;
+- do not deploy or change configuration;
+- report the blocker once and remain stopped.
+
+When the unblock condition is met, PRIME-DEV-001 owns execution of the acceptance test, evidence preservation, and PASS/FAIL report.
