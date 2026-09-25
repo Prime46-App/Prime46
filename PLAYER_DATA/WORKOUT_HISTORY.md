@@ -1,6 +1,6 @@
 # PRIME 46 — PLAYER ONE WORKOUT HISTORY
 
-Status: historical owner-reported observations; not product canon or app integration. Reconstructed 2026-09-20; updated 2026-09-22. Dates marked EXACT are explicitly supplied or anchored by dated same-day conversation; INFERRED dates are derived from 'yesterday' and message timestamps; UNKNOWN means workout date cannot be established. No automatic app ingestion or synchronization is claimed. A later retelling of the same performance is not a second workout. Machine loads and distances are machine-specific. All weights lb.
+Status: historical owner-reported observations; not product canon or app integration. Reconstructed 2026-09-20; updated 2026-09-24. Dates marked EXACT are explicitly supplied or anchored by dated same-day conversation; INFERRED dates are derived from 'yesterday' and message timestamps; UNKNOWN means workout date cannot be established. No automatic app ingestion or synchronization is claimed. A later retelling of the same performance is not a second workout. Machine loads and distances are machine-specific. All weights lb.
 
 ## Dated sessions
 
@@ -49,6 +49,12 @@ Status: historical owner-reported observations; not product canon or app integra
 - Planned hip-hinge, face pulls, trunk work, and cardio cooldown were NOT performed; do not record them as completed.
 - Sauna: 25 min; 5-min break with cold shower; then sauna 10 min; followed by another cold shower. Total sauna exposure: 35 min. Cold-shower durations not reported.
 
+### 2026-09-24 — EXACT (same-day report; home lower-body/carry workout)
+- Goblet squat: one 50-lb dumbbell × 10 reps × 3 sets. Total external-load volume: 1,500 lb. This establishes a loaded free-standing squat-pattern baseline.
+- Step-ups: owner reported "with the 35lbs dumbbells" × 3 reps each leg. Whether this means one 35-lb dumbbell or one 35-lb dumbbell in each hand is unresolved; preserve as reported and do not compute load volume.
+- Farmer carry: 45-lb dumbbell in each hand while walking: set 1 = 120 sec; set 2 = 115 sec. Distance not reported. This establishes a moving-carry baseline distinct from prior static farmer holds.
+- No additional exercises were completed. Planned gym cardio/leg press, side planks, mobility, and sauna were NOT performed; do not record them as completed.
+
 ## Undated performance observations (NOT assigned workout dates)
 - Reported 2026-09-07: standing farmer hold 35 lb per hand for 2 min; push-ups 40 continuous; pull-ups 5, affected by prior distal-biceps tear; bodyweight squats 30; dips 22. These are assessment observations, not necessarily one gym workout.
 - Reported 2026-09-07: single-leg balance >90 sec each leg; test ceiling reached, actual maxima unknown.
@@ -57,7 +63,7 @@ Status: historical owner-reported observations; not product canon or app integra
 - Before biceps injury (date unknown): dumbbell curls and presses with 50-lb dumbbells; historical pull-ups approximately 12, push-ups 50 and dips 40 appear in prior assistant summaries but exact original owner reports for latter three were not independently recovered in this pass; keep unverified, do not score as confirmed records.
 
 ## Provenance and limitations
-- Primary source: Don's first-person messages in PRIME 46 conversation, dated September 3, 7, 8, 12, 19 and 20, 2026, and August 29 baseline context. Dates of messages are not always dates of workouts; inferred dates explicitly marked.
+- Primary source: Don's first-person messages in PRIME 46 conversation, dated September 3, 7, 8, 12, 19, 20, 22, and 24, 2026, and August 29 baseline context. Dates of messages are not always dates of workouts; inferred dates explicitly marked.
 - Additional cross-chat personal-context retrieval found September 18 and September 20 workout summaries and August 29 baseline, but did not establish an exhaustive search of every historical chat. This file is a recovered subset, NOT a certified complete history.
 - Earlier assistant arithmetic and evaluative labels are not authoritative. For example, September 8 leg-press volume computes to 19,350 lb; September 20 incline bench 3,825 lb. Do not promote prior assistant guesses about 1RM, percentiles, or clinical fitness to measured data.
 - Preserve append-only history; corrections should explain what changed and why. Separate exact session dates, inferred dates, and unknown dates. No workouts automatically imported into PRIME 46 application.
