@@ -1,4 +1,4 @@
-# PRIME 46 — BODY MVP v0.8 CANDIDATE
+# PRIME 46 — BODY MVP v0.8 MERGED / PRODUCTION VERIFICATION OPEN
 
 Player One QA revision of the playable BODY / THE VESSEL MVP.
 
@@ -16,8 +16,11 @@ Do not reconstruct PRIME 46 from conversational memory or implementation code wh
 
 ## Current product state
 
-- Current feature candidate: **BODY MVP v0.8 — Boss Fight & Closed Progression Loop**
-- Production remains v0.7 until a separate Owner merge decision advances this candidate to `main`.
+- Current `main` implementation: **BODY MVP v0.8 — Boss Fight & Closed Progression Loop**.
+- PR #1 was merged to `main` at `779a6bd30e6942c29e7408c0297bdc826c879bb0`; main integrity run `35932184399` passed.
+- Exact candidate mobile acceptance at **390 × 844** passed in GitHub Actions run `35931853091`.
+- **Production v0.8 is NOT yet verified.** The first live production recheck after merge/retrigger failed because production behaved like the prior asset set; target version promotion/final live verification remain open.
+- Assignment #004 therefore remains **AUTHORIZED / OPEN — BLOCKED ON PRODUCTION PROMOTION + FINAL LIVE ACCEPTANCE**.
 - Canonical product authority: `PRODUCT_BIBLE.md`
 - Canon/history: `DECISION_LOG.md`
 - LOCKED BODY scoring contract: `VESSEL_IMPLEMENTATION_SPEC_v1.0.md`
@@ -55,7 +58,7 @@ PRIME 46 is explicitly mobile-first. PLAY, ACTIVE QUEST, CHARACTER, and ASSESSME
 - Training logs use method-appropriate evidence fields for strength, Cardio, Mobility, and Balance.
 - PROGRESS shows verified Assessment history; Training remains separate from Capability.
 
-## v0.8 candidate — Boss Fight & Closed Progression Loop
+## v0.8 merged implementation — Boss Fight & Closed Progression Loop
 
 - Verified assessments establish persistent Boss baselines without fabricating readiness.
 - Qualifying post-baseline development can establish readiness; completion or time alone cannot.
@@ -84,4 +87,4 @@ Production pipeline:
 Production URL:
 `https://prime46.murphinsystems.workers.dev`
 
-Cloudflare automatically builds approved commits to `main`. `.assetsignore` excludes repository-only/test/canon material from static production assets. Netlify remains fallback infrastructure until explicitly retired.
+Cloudflare connected builds run from approved commits to `main`, but the current deployment command uses `wrangler versions upload`, which creates an uploaded Worker version without by itself proving production traffic moved to that version. Production must be independently promoted/deployed and then verified at the live Worker. `.assetsignore` excludes repository-only/test/canon material from static production assets. Netlify remains fallback infrastructure until explicitly retired.
