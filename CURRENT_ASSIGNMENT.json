@@ -1,7 +1,30 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "status": "AUTHORIZED",
   "assignment": 4,
   "file": "PRIME_DEV_001_ASSIGNMENT_004.md",
-  "milestone": "PRIME 46 BODY MVP v0.8 — BOSS FIGHT & CLOSED PROGRESSION LOOP"
+  "milestone": "PRIME 46 BODY MVP v0.8 — BOSS FIGHT & CLOSED PROGRESSION LOOP",
+  "execution_state": "IMPLEMENTATION_MERGED__PRODUCTION_VERIFICATION_BLOCKED",
+  "current_blocker": "Uploaded Worker version 1678591f-5cb2-40dc-b2eb-7613418da483 is not yet verified at 100% production traffic; final live 390x844 acceptance remains pending.",
+  "last_verified_evidence": {
+    "candidate_mobile_acceptance": {
+      "run_id": 35931853091,
+      "result": "PASS"
+    },
+    "merge_commit": "779a6bd30e6942c29e7408c0297bdc826c879bb0",
+    "main_integrity": {
+      "run_id": 35932184399,
+      "result": "PASS"
+    },
+    "production_recheck": {
+      "run_id": 35932693661,
+      "result": "FAIL_PRIOR_PRODUCTION_BEHAVIOR"
+    },
+    "cloudflare_uploaded_version": "1678591f-5cb2-40dc-b2eb-7613418da483",
+    "github_promotion_probe": {
+      "run_id": 36016747147,
+      "result": "BLOCKED_BEFORE_PROMOTION_NO_CLOUDFLARE_API_TOKEN"
+    }
+  },
+  "last_reconciled": "2026-09-24"
 }
