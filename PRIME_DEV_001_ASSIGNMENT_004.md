@@ -168,7 +168,7 @@ Do not expand scope after satisfying this assignment.
 
 ## Historical runtime blocker — 2026-09-23 — SUPERSEDED
 
-**Execution status:** BLOCKED — mobile acceptance test not executed.
+**Historical execution status at that time — SUPERSEDED:** BLOCKED — mobile acceptance test had not yet executed.
 
 A fresh ChatGPT Work execution attempt was made under the Owner's explicit instruction to resume Assignment #004 and execute the required **390 × 844** mobile acceptance test.
 
@@ -189,7 +189,7 @@ Resume Assignment #004 only when an **authorized browser runtime exists that can
 Until then:
 - do not repeat the same fixed-desktop investigation;
 - do not ask the Owner to perform the QA manually;
-- do not merge PR #1;
+- historical instruction at that time: do not merge PR #1; **SUPERSEDED by the later Owner-authorized merge**;
 - do not deploy or change configuration;
 - report the blocker once and remain stopped.
 
@@ -213,7 +213,7 @@ Verified runtime evidence from that attempt:
 - gameplay acceptance checks: NOT RUN;
 - repository changes: NONE;
 - deployment changes: NONE;
-- PR #1 remains draft / unmerged.
+- historical observation at that attempt: PR #1 remained draft / unmerged; **SUPERSEDED — PR #1 was later merged to `main`**.
 
 This second independent runtime attempt confirms that the currently exposed ChatGPT Work and Atlas cloud browser surfaces do not satisfy the mobile acceptance precondition. Do not repeat either runtime path unless their capabilities materially change.
 
