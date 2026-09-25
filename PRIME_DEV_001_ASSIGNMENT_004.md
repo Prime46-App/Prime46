@@ -2,6 +2,19 @@
 
 **Status: AUTHORIZED**
 
+## Current reconciled execution state — 2026-09-24
+
+**Implementation:** VERIFIED / MERGED  
+**Candidate 390 × 844 acceptance:** PASS — GitHub Actions run `35931853091`  
+**Merge:** PR #1 merged to `main` at `779a6bd30e6942c29e7408c0297bdc826c879bb0`  
+**Main integrity:** PASS — run `35932184399`  
+**Production verification:** OPEN / BLOCKED  
+**Last live production acceptance:** FAIL — run `35932693661`; exact 390 × 844 viewport verified, but production returned prior recommendation behavior (`ESTABLISH BALANCE` vs expected `FIGHT YOUR PUSH BOSS`).  
+**Uploaded Cloudflare target version:** `1678591f-5cb2-40dc-b2eb-7613418da483` from build `cec08f80` / main `bb041bfa6354970f7ff0dca936aaada856063239`; Cloudflare output explicitly required a later `wrangler versions deploy` operation for production traffic.  
+**Current blocker:** target version has not been verified at 100% production traffic; final live 390 × 844 acceptance remains pending.  
+**Do not repeat:** fixed-desktop/Atlas viewport investigations, pre-merge QA, merge decision, or the failed GitHub credential probe.  
+**Closure rule:** Assignment #004 remains AUTHORIZED until production promotion succeeds and one final live acceptance PASS is preserved.
+
 - **Authorized:** 2026-09-11
 - **Authorized by:** Don Murphin — Founder / Product Owner / Player One
 
@@ -153,7 +166,7 @@ Do not expand scope after satisfying this assignment.
 **BUILT. NOT GIVEN.**
 
 
-## Runtime blocker — 2026-09-23
+## Historical runtime blocker — 2026-09-23 — SUPERSEDED
 
 **Execution status:** BLOCKED — mobile acceptance test not executed.
 
@@ -183,7 +196,7 @@ Until then:
 When the unblock condition is met, PRIME-DEV-001 owns execution of the acceptance test, evidence preservation, and PASS/FAIL report.
 
 
-## Atlas runtime attempt — 2026-09-23
+## Historical Atlas runtime attempt — 2026-09-23 — SUPERSEDED
 
 **Status:** FAIL — BLOCKED BEFORE ACCEPTANCE TEST.
 
