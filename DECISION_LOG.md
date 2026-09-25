@@ -391,3 +391,13 @@ Status: **LOCKED**
 - Once established, readiness is not removed by refusal or later context; a legitimate Boss attempt consumes it and begins a new developmental cycle.
 - State schema v8 migrates valid v0.7 evidence and preserves Boss history.
 - This entry records implementation evidence only. It does not change LOCKED canon or authorize merge/deployment.
+
+
+## 2026-09-24 — WORKING — Assignment #004 deployment state
+- v0.8 Boss Fight implementation passed exact 390 × 844 candidate acceptance in GitHub Actions run `35931853091`.
+- PR #1 merged to `main` at `779a6bd30e6942c29e7408c0297bdc826c879bb0`; main integrity run `35932184399` passed.
+- Production acceptance run `35932693661` verified the exact viewport but failed because live production still behaved like the prior asset set.
+- Cloudflare build `cec08f80` uploaded Worker version `1678591f-5cb2-40dc-b2eb-7613418da483`; upload alone did not assign production traffic.
+- GitHub promotion probe run `36016747147` failed before any promotion because `CLOUDFLARE_API_TOKEN` was unavailable to the workflow; no production change occurred from that attempt.
+- Assignment #004 remains AUTHORIZED / OPEN. The only remaining completion gate is verified production promotion plus one final live 390 × 844 acceptance PASS.
+- Historical fixed-desktop and Atlas mobile-runtime blockers are superseded by the successful CI mobile runtime and must not be reinvestigated.
