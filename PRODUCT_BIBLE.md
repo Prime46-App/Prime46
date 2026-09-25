@@ -347,9 +347,9 @@ Desktop expands from the phone-first hierarchy.
 
 ## 16. Current Implementation State — WORKING
 
-Current production version: **PRIME 46 BODY MVP v0.7 — State Integrity & Progress Evidence**.
+Current `main` implementation: **PRIME 46 BODY MVP v0.8 — Boss Fight & Closed Progression Loop**. PR #1 was merged at `779a6bd30e6942c29e7408c0297bdc826c879bb0`; main integrity verification passed in run `35932184399`.
 
-Current authorized feature candidate: **PRIME 46 BODY MVP v0.8 — Boss Fight & Closed Progression Loop**. It is not production until separately approved and merged to `main`.
+Candidate mobile acceptance at exact **390 × 844** passed in run `35931853091`. **Live production v0.8 remains unverified**: production recheck run `35932693661` reached the exact viewport but observed prior behavior (`ESTABLISH BALANCE` instead of the prepared `FIGHT YOUR PUSH BOSS`). Assignment #004 therefore remains open until the uploaded v0.8 Worker version is assigned production traffic and the final live acceptance passes.
 
 Verified milestone behavior recorded in Assignment #002 / README:
 - assessment input drafts are separate from verified Capability
@@ -383,7 +383,7 @@ Pipeline:
 Production URL:
 `https://prime46.murphinsystems.workers.dev`
 
-Cloudflare automatically builds production after approved commits to `main`.
+Cloudflare connected builds execute after approved commits to `main`. Under the current configuration, `wrangler versions upload` creates a Worker version but does not itself prove or assign 100% production traffic. Production promotion/deployment and live verification are separate required steps.
 
 Netlify remains a fallback and must not be retired without explicit authorization.
 
