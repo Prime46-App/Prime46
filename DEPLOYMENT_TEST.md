@@ -63,3 +63,29 @@ Assignment #004 remains open.
 
 Required remaining chain:
 **PROMOTE/DEPLOY exact uploaded version → verify 100% production traffic → run one final live 390 × 844 Boss acceptance → PASS/FAIL → close only on PASS.**
+
+
+## Assignment #004 production promotion and final verification — 2026-09-29
+
+Credential state materially changed when repository secret `CLOUDFLARE_API_TOKEN` became available to the existing one-shot promotion workflow.
+
+Verified promotion result — GitHub Actions run `36016747147`:
+- Cloudflare credential precondition: **PASS**
+- exact Worker version promoted: `1678591f-5cb2-40dc-b2eb-7613418da483`
+- production traffic target: **100%**
+- production deployment-status verification: **PASS**
+- workflow conclusion: **SUCCESS**
+
+Verified final live production acceptance — GitHub Actions run `35932693661`, rerun after promotion:
+- production URL: `https://prime46.murphinsystems.workers.dev`
+- viewport: **390 × 844**
+- production Boss acceptance: **PASS**
+- evidence preservation: **PASS**
+- workflow conclusion: **SUCCESS**
+
+## Current deployment state
+
+**Assignment #004: COMPLETE.**
+
+The required closure chain is fully verified:
+**PROMOTE exact uploaded version → verify production deployment → final live 390 × 844 Boss acceptance → PASS → evidence preserved → COMPLETE.**
