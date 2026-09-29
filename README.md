@@ -1,4 +1,4 @@
-# PRIME 46 — BODY MVP v0.8 MERGED / PRODUCTION VERIFICATION OPEN
+# PRIME 46 — BODY MVP v0.8 COMPLETE / PRODUCTION VERIFIED
 
 Player One QA revision of the playable BODY / THE VESSEL MVP.
 
@@ -19,8 +19,9 @@ Do not reconstruct PRIME 46 from conversational memory or implementation code wh
 - Current `main` implementation: **BODY MVP v0.8 — Boss Fight & Closed Progression Loop**.
 - PR #1 was merged to `main` at `779a6bd30e6942c29e7408c0297bdc826c879bb0`; main integrity run `35932184399` passed.
 - Exact candidate mobile acceptance at **390 × 844** passed in GitHub Actions run `35931853091`.
-- **Production v0.8 is NOT yet verified.** The first live production recheck after merge/retrigger failed because production behaved like the prior asset set; target version promotion/final live verification remain open.
-- Assignment #004 therefore remains **AUTHORIZED / OPEN — BLOCKED ON PRODUCTION PROMOTION + FINAL LIVE ACCEPTANCE**.
+- **Production v0.8 is VERIFIED.** Exact Worker version `1678591f-5cb2-40dc-b2eb-7613418da483` was promoted to 100% production traffic in GitHub Actions run `36016747147`, and deployment-status verification passed.
+- Final live production Boss acceptance at **390 × 844** passed in GitHub Actions run `35932693661` after promotion; evidence preservation also passed.
+- Assignment #004 is therefore **COMPLETE**.
 - Canonical product authority: `PRODUCT_BIBLE.md`
 - Canon/history: `DECISION_LOG.md`
 - LOCKED BODY scoring contract: `VESSEL_IMPLEMENTATION_SPEC_v1.0.md`
