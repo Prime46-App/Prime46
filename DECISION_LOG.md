@@ -401,3 +401,12 @@ Status: **LOCKED**
 - GitHub promotion probe run `36016747147` failed before any promotion because `CLOUDFLARE_API_TOKEN` was unavailable to the workflow; no production change occurred from that attempt.
 - Assignment #004 remains AUTHORIZED / OPEN. The only remaining completion gate is verified production promotion plus one final live 390 × 844 acceptance PASS.
 - Historical fixed-desktop and Atlas mobile-runtime blockers are superseded by the successful CI mobile runtime and must not be reinvestigated.
+
+
+## 2026-09-29 — VERIFIED — Assignment #004 production closure
+- Exact Cloudflare Worker version `1678591f-5cb2-40dc-b2eb-7613418da483` was promoted to **100% production traffic** by the authorized one-shot GitHub Actions workflow, run `36016747147`.
+- Cloudflare deployment-status verification passed in the same run.
+- Final live production Boss acceptance at exactly **390 × 844** passed in GitHub Actions run `35932693661` after promotion.
+- Evidence preservation passed.
+- Assignment #004 — **PRIME 46 BODY MVP v0.8 — Boss Fight & Closed Progression Loop** — is **COMPLETE**.
+- No new product canon was introduced by closure.
