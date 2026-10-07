@@ -135,3 +135,11 @@ Before making product-significant changes, a fresh instance should be able to id
 - OPEN/WORKING material — `PRODUCT_BIBLE.md` §§14, 16, 18 and explicit statuses in source files
 
 **CANON BEATS MEMORY.**
+
+
+## Supporting visual direction — WORKING
+
+- `design/PRIME46_GRAPHICS_STANDARD_v0.1.md`
+  - Owner-approved baseline visual direction for PRIME 46 graphics and mobile screen treatment.
+  - The supplied long-form dashboard is a composite reference board to be decomposed into multiple screens; it is not application information architecture.
+  - Visual direction remains subordinate to LOCKED product canon, navigation, scoring, evidence semantics, and mobile-first requirements.
